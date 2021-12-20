@@ -1,6 +1,6 @@
 import com.opencsv.CSVReader;
-import table.ConnectDB;
-import table.insert.DataLoader;
+import table.database.ConnectDB;
+import table.database.DataLoader;
 import util.CSV;
 
 import java.io.IOException;
@@ -13,6 +13,7 @@ public class main {
         rawFile.anonymize();
         CSVReader signUp = CSV.getCVS(System.getProperty("user.dir") + "\\anonymizedDataSource.csv");
         CSVReader meeting = new CSV("Meeting.csv").getReader();
-        DataLoader.loadData(connection, signUp, meeting);
+        DataLoader dl = new DataLoader();
+        dl.loadData(connection, signUp, meeting);
     }
 }
