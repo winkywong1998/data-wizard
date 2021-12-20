@@ -1,6 +1,6 @@
 import com.opencsv.CSVReader;
-import table.database.ConnectDB;
-import table.database.DataLoader;
+import db.ConnectDB;
+import db.DataLoader;
 import util.CSV;
 
 import java.io.IOException;
