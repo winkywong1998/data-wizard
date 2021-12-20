@@ -13,6 +13,11 @@ import org.apache.commons.lang3.StringUtils;
 public class CSV {
     String path;
     CSVReader reader;
+
+    public CSVReader getReader() {
+        return reader;
+    }
+
     public CSV (String csvName) throws FileNotFoundException {
         this.path = getCVSFilePath(csvName);
         this.reader = getCVS(this.path);

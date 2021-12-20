@@ -11,15 +11,8 @@ public class main {
         Connection connection = ConnectDB.getConnection();
         CSV rawFile = new CSV("SignUpSheets.csv");
         rawFile.anonymize();
-        CSVReader reader = CSV.getCVS(System.getProperty("user.dir") + "\\anonymizedDataSource.csv");
-        DataLoader.loadData(connection, reader);
-
-
-//        System.out.println(randomizer.fNameList);
-//        System.out.println(randomizer.getRandomFName());
-//        System.out.println(randomizer.getRandomLName());
-//        System.out.println(randomizer.getRandomEmail());
-//        System.out.println(randomizer.getRandomPhone());
-//        ConnectDB.getConnection();
+        CSVReader signUp = CSV.getCVS(System.getProperty("user.dir") + "\\anonymizedDataSource.csv");
+        CSVReader meeting = new CSV("Meeting.csv").getReader();
+        DataLoader.loadData(connection, signUp, meeting);
     }
 }

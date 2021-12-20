@@ -18,7 +18,7 @@ public class Generator {
         return Integer.toString(rand.nextInt(1000000000));
     }
 
-    public static Timestamp genTS(){
+    public static Timestamp genDate(){
         long offset = Timestamp.valueOf("2021-01-01 00:00:00").getTime();
         long end = Timestamp.valueOf("2022-01-01 00:00:00").getTime();
         long diff = end - offset + 1;
@@ -40,5 +40,16 @@ public class Generator {
 
     public static int genInt(int Range){
         return rand.nextInt(Range);
+    }
+
+    public static String genRandomString(int length){
+        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random=new Random();
+        StringBuffer sb=new StringBuffer();
+        for(int i=0;i<length;i++){
+            int number=random.nextInt(62);
+            sb.append(str.charAt(number));
+        }
+        return sb.toString();
     }
 }
