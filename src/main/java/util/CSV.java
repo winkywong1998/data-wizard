@@ -23,7 +23,7 @@ public class CSV {
         return filePath;
     }
 
-    public CSVReader getCVS(String path) throws FileNotFoundException {
+    public static CSVReader getCVS(String path) throws FileNotFoundException {
             CSVReader reader = new CSVReader(new FileReader(path));
             return reader;
     }
@@ -41,13 +41,13 @@ public class CSV {
     public void anonymize() throws IOException {
             Anonymizer rand = new Anonymizer("us-500.csv");
             CSVWriter writer = new CSVWriter(new FileWriter("anonymizedDataSource.csv"));
-            String[] entries = "number, first_name, last_name, email, phone, time, coding_before, yearOfCoding, num_of_exp, major, r_or_i, volunteer_or_not"
+            String[] entries = "number, first_name, last_name, email, phone, coding_before, yearOfCoding, num_of_exp, major, r_or_i, volunteer_or_not, degree, team"
                     .split(",");
             writer.writeNext(entries);
 
             String line[];
             Iterator it = this.reader.iterator();
-            List<String> list = new ArrayList<>();
+            List<String> list;
             it.next();
             while (it.hasNext()) {
                     line = (String[]) it.next();

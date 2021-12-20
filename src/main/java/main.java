@@ -1,13 +1,20 @@
+import com.opencsv.CSVReader;
+import table.ConnectDB;
+import table.insert.DataLoader;
 import util.CSV;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 public class main {
     public static void main(String[] args) throws IOException {
-        CSV CVSfile = new CSV("DataSource.csv");
-//        CVSfile.printCVS();
-        CVSfile.anonymize();
-//        Randomizer randomizer = new Randomizer("us-500.csv");
+        Connection connection = ConnectDB.getConnection();
+        CSV rawFile = new CSV("SignUpSheets.csv");
+        rawFile.anonymize();
+        CSVReader reader = CSV.getCVS(System.getProperty("user.dir") + "\\anonymizedDataSource.csv");
+        DataLoader.loadData(connection, reader);
+
+
 //        System.out.println(randomizer.fNameList);
 //        System.out.println(randomizer.getRandomFName());
 //        System.out.println(randomizer.getRandomLName());
